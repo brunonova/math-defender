@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://objects/MouseAreaPlayer.gd" type="Script" id=1]
+
+[node name="MouseAreaPlayer" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_default_cursor_shape = 2
+script = ExtResource( 1 )
+
+[connection signal="gui_input" from="." to="." method="_on_MouseAreaPlayer_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_MouseAreaPlayer_mouse_entered"]

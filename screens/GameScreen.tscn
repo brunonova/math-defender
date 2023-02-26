@@ -1,0 +1,822 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://objects/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://screens/GameScreen.gd" type="Script" id=2]
+[ext_resource path="res://images/background.png" type="Texture" id=3]
+[ext_resource path="res://objects/Bomb.tscn" type="PackedScene" id=4]
+[ext_resource path="res://music/music2.wav" type="AudioStream" id=5]
+[ext_resource path="res://images/bullet.png" type="Texture" id=6]
+[ext_resource path="res://themes/ui_theme.tres" type="Theme" id=7]
+[ext_resource path="res://objects/MouseAreaPlayer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://images/turret.png" type="Texture" id=9]
+[ext_resource path="res://tilesets/tileset.tres" type="TileSet" id=10]
+[ext_resource path="res://screens/PauseScreen.tscn" type="PackedScene" id=11]
+[ext_resource path="res://images/ui/pause.png" type="Texture" id=12]
+[ext_resource path="res://music/music5.wav" type="AudioStream" id=13]
+[ext_resource path="res://music/music1.wav" type="AudioStream" id=14]
+[ext_resource path="res://music/music3.wav" type="AudioStream" id=15]
+[ext_resource path="res://music/music4.wav" type="AudioStream" id=16]
+[ext_resource path="res://music/game_over.mp3" type="AudioStream" id=17]
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "flash_red"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 0, 0, 0.12549 ), Color( 1, 1, 1, 0 ), Color( 1, 0, 0, 0.12549 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "flash_white"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.0627451 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("LevelUpLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "blink"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("LevelUpLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Player:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Player:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Ground:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../GroundBackground:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("GameOverLabel:percent_visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("GameOverLabel:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "show"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 1, 0, 0, 0.12549 ), Color( 0, 0, 0, 0 ), Color( 1, 0, 0, 0.12549 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.25098 ), Color( 0.12549, 0, 0, 0.501961 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Player:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Player:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 0.210224, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.25 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Ground:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../GroundBackground:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("GameOverLabel:percent_visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.8, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("GameOverLabel:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.8, 1.1, 1.4, 1.7, 2, 2.3, 2.6, 2.9, 3.2, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("OperationLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("OperationLabel:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "hide"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("OperationLabel:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 0.5, 2 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.2 ), Vector2( 0.1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("OperationLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 0.5, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.75 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/path = NodePath("OperationLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 0.7, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.752941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.752941 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("OperationLabel:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "highscore"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0.752941, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0.752941, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0.752941, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0.752941, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0.752941, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 288, 30 )
+
+[node name="GameScreen" type="Node"]
+script = ExtResource( 2 )
+bomb_scene = ExtResource( 4 )
+possible_bomb_positions = [ NodePath("BombPositions/Pos0"), NodePath("BombPositions/Pos1"), NodePath("BombPositions/Pos2"), NodePath("BombPositions/Pos3") ]
+musics_paths = [ NodePath("Audio/Music1"), NodePath("Audio/Music2"), NodePath("Audio/Music3"), NodePath("Audio/Music4"), NodePath("Audio/Music5") ]
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="NewRoundTimer" type="Timer" parent="Timers"]
+wait_time = 0.5
+one_shot = true
+
+[node name="NewLevelTimer" type="Timer" parent="Timers"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Music1" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 14 )
+volume_db = -2.0
+bus = "Music"
+
+[node name="Music2" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 5 )
+volume_db = -2.0
+bus = "Music"
+
+[node name="Music3" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 15 )
+volume_db = -4.0
+bus = "Music"
+
+[node name="Music4" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 16 )
+volume_db = -4.0
+bus = "Music"
+
+[node name="Music5" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 13 )
+volume_db = -6.0
+bus = "Music"
+
+[node name="GameOverMusic" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 17 )
+volume_db = -4.0
+bus = "Music"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.25, 0.25 )
+
+[node name="Background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -96, -192 )
+z_index = -10
+texture = ExtResource( 3 )
+centered = false
+
+[node name="GroundBackground" type="TileMap" parent="."]
+z_index = -1
+tile_set = ExtResource( 10 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 1376258, 1, 4, 1376259, 1, 4, 1376262, 1, 4, 1376263, 1, 3, 1376266, 1, 65539, 1376267, 1, 65538, 1376270, 1, 1, 1376271, 1, 1, 1441794, 1, 65537, 1441795, 1, 65538, 1441798, 1, 2, 1441799, 1, 65538, 1441802, 1, 65536, 1441803, 1, 1, 1441806, 1, 65536, 1441807, 1, 65536 )
+
+[node name="Ground" type="TileMap" parent="."]
+z_index = 1
+tile_set = ExtResource( 10 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 1441790, 0, 0, 1441791, 0, 1, 1376256, 0, 1, 1376257, 0, 2, 1376260, 0, 0, 1376261, 0, 2, 1376264, 0, 0, 1376265, 0, 2, 1376268, 0, 0, 1376269, 0, 2, 1376272, 0, 0, 1376273, 0, 1, 1376274, 0, 1, 1376275, 0, 2, 1507326, 0, 65536, 1507327, 0, 65537, 1441792, 0, 65537, 1441793, 0, 65538, 1441796, 0, 65536, 1441797, 0, 65538, 1441800, 0, 65536, 1441801, 0, 65538, 1441804, 0, 65536, 1441805, 0, 65538, 1441808, 0, 65536, 1441809, 0, 65537, 1441810, 0, 65537, 1441811, 0, 65538, 1572862, 0, 65536, 1572863, 0, 65537, 1507328, 0, 65537, 1507329, 0, 65539, 1507330, 0, 1, 1507331, 0, 1, 1507332, 0, 65540, 1507333, 0, 65539, 1507334, 0, 1, 1507335, 0, 1, 1507336, 0, 65540, 1507337, 0, 65539, 1507338, 0, 1, 1507339, 0, 1, 1507340, 0, 65540, 1507341, 0, 65539, 1507342, 0, 1, 1507343, 0, 1, 1507344, 0, 65540, 1507345, 0, 65537, 1507346, 0, 65537, 1507347, 0, 65538, 1638398, 0, 65536, 1638399, 0, 65537, 1572864, 0, 65537, 1572865, 0, 65537, 1572866, 0, 65537, 1572867, 0, 65537, 1572868, 0, 65537, 1572869, 0, 65537, 1572870, 0, 65537, 1572871, 0, 65537, 1572872, 0, 65537, 1572873, 0, 65537, 1572874, 0, 65537, 1572875, 0, 65537, 1572876, 0, 65537, 1572877, 0, 65537, 1572878, 0, 65537, 1572879, 0, 65537, 1572880, 0, 65537, 1572881, 0, 65537, 1572882, 0, 65537, 1572883, 0, 65538, 1703934, 0, 65536, 1703935, 0, 65537, 1638400, 0, 65537, 1638401, 0, 65537, 1638402, 0, 65537, 1638403, 0, 65537, 1638404, 0, 65537, 1638405, 0, 65537, 1638406, 0, 65537, 1638407, 0, 65537, 1638408, 0, 65537, 1638409, 0, 65537, 1638410, 0, 65537, 1638411, 0, 65537, 1638412, 0, 65537, 1638413, 0, 65537, 1638414, 0, 65537, 1638415, 0, 65537, 1638416, 0, 65537, 1638417, 0, 65537, 1638418, 0, 65537, 1638419, 0, 65538 )
+
+[node name="PauseScreen" parent="." instance=ExtResource( 11 )]
+unique_name_in_owner = true
+visible = false
+player_nodepath = NodePath("../Player")
+
+[node name="FlashLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="FlashLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 1, 1, 0 )
+
+[node name="FlashAnimation" type="AnimationPlayer" parent="FlashLayer"]
+unique_name_in_owner = true
+anims/RESET = SubResource( 6 )
+anims/flash_red = SubResource( 7 )
+anims/flash_white = SubResource( 5 )
+
+[node name="LevelUpLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+layer = 3
+visible = false
+
+[node name="Background" type="ColorRect" parent="LevelUpLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="LevelUpLabel" type="Label" parent="LevelUpLayer"]
+unique_name_in_owner = true
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -27.5
+margin_bottom = 27.5
+theme = ExtResource( 7 )
+theme_type_variation = "TitleLabel"
+text = "PERFECT"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelUpLayer"]
+autoplay = "blink"
+anims/RESET = SubResource( 8 )
+anims/blink = SubResource( 9 )
+
+[node name="GameOverLayer" type="CanvasLayer" parent="."]
+layer = 3
+visible = false
+
+[node name="Background" type="ColorRect" parent="GameOverLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+
+[node name="GameOverLabel" type="Label" parent="GameOverLayer"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -27.5
+margin_bottom = 27.5
+rect_pivot_offset = Vector2( 288, 27.5 )
+theme = ExtResource( 7 )
+theme_type_variation = "TitleLabel"
+text = "GAME_OVER"
+align = 1
+valign = 1
+percent_visible = 0.0
+
+[node name="GameOverAnimation" type="AnimationPlayer" parent="GameOverLayer"]
+unique_name_in_owner = true
+anims/RESET = SubResource( 11 )
+anims/show = SubResource( 10 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+follow_viewport_enable = true
+
+[node name="HUD" type="Control" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 7 )
+
+[node name="Background" type="TileMap" parent="UI/HUD"]
+tile_set = ExtResource( 10 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 2, 0, 1, 2, 1, 2, 2, 1, 3, 2, 1, 4, 2, 1, 5, 2, 1, 6, 2, 1, 7, 2, 1, 8, 2, 1, 9, 2, 1, 10, 2, 1, 11, 2, 1, 12, 2, 1, 13, 2, 1, 14, 2, 1, 15, 2, 1, 16, 2, 1, 17, 2, 2, 65536, 2, 65536, 65537, 2, 65537, 65538, 2, 65537, 65539, 2, 65537, 65540, 2, 65537, 65541, 2, 65537, 65542, 2, 65537, 65543, 2, 65537, 65544, 2, 65537, 65545, 2, 65537, 65546, 2, 65537, 65547, 2, 65537, 65548, 2, 65537, 65549, 2, 65537, 65550, 2, 65537, 65551, 2, 65537, 65552, 2, 65537, 65553, 2, 65538, 131072, 2, 65536, 131073, 2, 65537, 131074, 2, 65537, 131075, 2, 65537, 131076, 2, 65537, 131077, 2, 65537, 131078, 2, 65537, 131079, 2, 65537, 131080, 2, 65537, 131081, 2, 65537, 131082, 2, 65537, 131083, 2, 65537, 131084, 2, 65537, 131085, 2, 65537, 131086, 2, 65537, 131087, 2, 65537, 131088, 2, 65537, 131089, 2, 65538, 196608, 2, 65536, 196609, 2, 65537, 196610, 2, 65537, 196611, 2, 65537, 196612, 2, 65537, 196613, 2, 65537, 196614, 2, 65537, 196615, 2, 65537, 196616, 2, 65537, 196617, 2, 65537, 196618, 2, 65537, 196619, 2, 65537, 196620, 2, 65537, 196621, 2, 65537, 196622, 2, 65537, 196623, 2, 65537, 196624, 2, 65537, 196625, 2, 65538, 262144, 2, 131072, 262145, 2, 131073, 262146, 2, 131073, 262147, 2, 131073, 262148, 2, 131073, 262149, 2, 131073, 262150, 2, 131073, 262151, 2, 131073, 262152, 2, 131073, 262153, 2, 131073, 262154, 2, 131073, 262155, 2, 131073, 262156, 2, 131073, 262157, 2, 131073, 262158, 2, 131073, 262159, 2, 131073, 262160, 2, 131073, 262161, 2, 131074 )
+
+[node name="OperationLabel" type="Label" parent="UI/HUD"]
+unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 576.0
+margin_bottom = 128.0
+rect_pivot_offset = Vector2( 288, 64 )
+theme_type_variation = "Operation"
+text = "? + ? = ?"
+align = 1
+valign = 1
+
+[node name="OperationAnimation" type="AnimationPlayer" parent="UI/HUD/OperationLabel"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+anims/RESET = SubResource( 1 )
+anims/hide = SubResource( 3 )
+anims/show = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="UI/HUD"]
+position = Vector2( 548, 716 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 9 )
+
+[node name="LevelLabel" type="Label" parent="UI/HUD"]
+unique_name_in_owner = true
+margin_left = 40.0
+margin_top = 96.0
+margin_right = 168.0
+margin_bottom = 128.0
+grow_horizontal = 0
+theme_type_variation = "HUD"
+text = "Lvl 1-1"
+valign = 1
+
+[node name="ScoreLabel" type="Label" parent="UI/HUD"]
+unique_name_in_owner = true
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -352.0
+margin_top = 96.0
+margin_right = -224.0
+margin_bottom = 128.0
+grow_horizontal = 0
+theme_type_variation = "HUD"
+text = "0"
+align = 1
+valign = 1
+
+[node name="HighScoreLabel" type="Label" parent="UI/HUD"]
+unique_name_in_owner = true
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -200.0
+margin_top = 96.0
+margin_right = -40.0
+margin_bottom = 128.0
+grow_horizontal = 0
+theme_type_variation = "HUD"
+text = "Best: 0"
+align = 2
+valign = 1
+
+[node name="HighScoreAnimation" type="AnimationPlayer" parent="UI/HUD/HighScoreLabel"]
+unique_name_in_owner = true
+anims/RESET = SubResource( 13 )
+anims/highscore = SubResource( 12 )
+
+[node name="AmmoBar" type="TextureRect" parent="UI/HUD"]
+unique_name_in_owner = true
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 13.0
+margin_top = -64.0
+margin_right = 53.0
+margin_bottom = 9.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+
+[node name="LivesLabel" type="Label" parent="UI/HUD"]
+unique_name_in_owner = true
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -56.0
+margin_top = -32.0
+theme_type_variation = "HUD"
+text = "x 5"
+align = 1
+valign = 1
+
+[node name="PauseButton" type="Button" parent="UI/HUD"]
+margin_left = 528.0
+margin_right = 576.0
+margin_bottom = 48.0
+hint_tooltip = "PAUSE"
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = "PauseButton"
+icon = ExtResource( 12 )
+icon_align = 1
+expand_icon = true
+
+[node name="LoseArea" type="Area2D" parent="."]
+position = Vector2( 288, 704 )
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LoseArea"]
+shape = SubResource( 4 )
+
+[node name="MouseAreas" type="Node" parent="."]
+
+[node name="Area0" parent="MouseAreas" instance=ExtResource( 8 )]
+margin_left = 32.0
+margin_top = 160.0
+margin_right = 160.0
+margin_bottom = 744.0
+__meta__ = {
+"_edit_lock_": true
+}
+player_nodepath = NodePath("../../Player")
+
+[node name="Area1" parent="MouseAreas" instance=ExtResource( 8 )]
+margin_left = 160.0
+margin_top = 160.0
+margin_right = 288.0
+margin_bottom = 744.0
+__meta__ = {
+"_edit_lock_": true
+}
+position_index = 1
+player_nodepath = NodePath("../../Player")
+
+[node name="Area2" parent="MouseAreas" instance=ExtResource( 8 )]
+margin_left = 288.0
+margin_top = 160.0
+margin_right = 416.0
+margin_bottom = 744.0
+__meta__ = {
+"_edit_lock_": true
+}
+position_index = 2
+player_nodepath = NodePath("../../Player")
+
+[node name="Area3" parent="MouseAreas" instance=ExtResource( 8 )]
+margin_left = 416.0
+margin_top = 160.0
+margin_right = 544.0
+margin_bottom = 744.0
+__meta__ = {
+"_edit_lock_": true
+}
+position_index = 3
+player_nodepath = NodePath("../../Player")
+
+[node name="PlayerPositions" type="Node" parent="."]
+__meta__ = {
+"_editor_description_": "Positions that the player can move to (from left to right)"
+}
+
+[node name="Pos0" type="Position2D" parent="PlayerPositions"]
+position = Vector2( 96, 704 )
+
+[node name="Pos1" type="Position2D" parent="PlayerPositions"]
+position = Vector2( 224, 704 )
+
+[node name="Pos2" type="Position2D" parent="PlayerPositions"]
+position = Vector2( 352, 704 )
+
+[node name="Pos3" type="Position2D" parent="PlayerPositions"]
+position = Vector2( 480, 704 )
+
+[node name="BombPositions" type="Node" parent="."]
+__meta__ = {
+"_editor_description_": "Positions where the bombs spawn (from left to right)."
+}
+
+[node name="Pos0" type="Position2D" parent="BombPositions"]
+position = Vector2( 96, 208 )
+
+[node name="Pos1" type="Position2D" parent="BombPositions"]
+position = Vector2( 224, 208 )
+
+[node name="Pos2" type="Position2D" parent="BombPositions"]
+position = Vector2( 352, 208 )
+
+[node name="Pos3" type="Position2D" parent="BombPositions"]
+position = Vector2( 480, 208 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true
+position = Vector2( 224, 704 )
+possible_positions = [ NodePath("../PlayerPositions/Pos0"), NodePath("../PlayerPositions/Pos1"), NodePath("../PlayerPositions/Pos2"), NodePath("../PlayerPositions/Pos3") ]
+
+[connection signal="pressed" from="UI/HUD/PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="area_entered" from="LoseArea" to="." method="_on_LoseArea_area_entered"]
+[connection signal="ammo_changed" from="Player" to="." method="_on_Player_ammo_changed"]

@@ -1,0 +1,21 @@
+keys,en,pt
+Math Defender,Math Defender,Defensor Matemático
+PLAY,Play,Jogar
+EXIT,Exit,Sair
+DIFFICULTY,Difficulty:,Dificuldade:
+SPEED,Speed:,Velocidade:
+LVL,Lvl %s-%s,Nvl %s-%s
+BEST,Best: %s,Melhor: %s
+WAVE,Wave %s,Vaga %s
+PERFECT,Perfect!,Perfeito!
+GREAT,Great!,Óptimo!
+GOOD,Good.,Bom.
+REASONABLE,Reasonable,Razoável
+PAUSE,Pause,Pausar
+PAUSED,PAUSED,EM PAUSA
+CONTINUE,Continue,Continuar
+QUIT,Quit,Sair
+GAME_OVER,GAME OVER,FIM DO JOGO
+TOGGLE_SOUND,Toggle sound,Alternar som
+TOGGLE_MUSIC,Toggle music,Alternar música
+TOGGLE_FULLSCREEN,Toggle fullscreen,Alternar ecrã completo

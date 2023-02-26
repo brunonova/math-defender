@@ -1,0 +1,153 @@
+[gd_resource type="Theme" load_steps=29 format=2]
+
+[ext_resource path="res://fonts/Ubuntu-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://images/ui/slider/slider_bar_highlight.png" type="Texture" id=2]
+[ext_resource path="res://images/ui/slider/slider_grab.png" type="Texture" id=3]
+[ext_resource path="res://images/ui/slider/slider_grab_highlight.png" type="Texture" id=4]
+[ext_resource path="res://images/ui/slider/slider_tick.png" type="Texture" id=5]
+[ext_resource path="res://images/ui/slider/slider_bar_filled.png" type="Texture" id=6]
+[ext_resource path="res://images/ui/slider/slider_bar.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=2]
+size = 42
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 32
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0, 0, 0, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0.752941, 0, 1 )
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.133333, 0.2, 0, 1 )
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.2, 0.2, 0.2, 0.752941 )
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0, 0, 0, 0.752941 )
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="DynamicFont" id=21]
+size = 52
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=23]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 1, 14 )
+
+[sub_resource type="StyleBoxTexture" id=24]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 1, 14 )
+
+[sub_resource type="StyleBoxTexture" id=22]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 1, 14 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 20
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 48
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 64
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=15]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=20]
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0, 0, 0, 0.752941 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0, 0, 0, 0.501961 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 48
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[resource]
+default_font = SubResource( 1 )
+BombNumber/base_type = "Label"
+BombNumber/colors/font_color = Color( 0, 0, 0, 1 )
+BombNumber/fonts/font = SubResource( 2 )
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/fonts/font = SubResource( 10 )
+Button/styles/focus = SubResource( 11 )
+Button/styles/hover = SubResource( 13 )
+Button/styles/normal = SubResource( 12 )
+Button/styles/pressed = SubResource( 14 )
+CheckButton/styles/pressed = SubResource( 12 )
+GameTitle/base_type = "Label"
+GameTitle/colors/font_color = Color( 1, 1, 1, 1 )
+GameTitle/fonts/font = SubResource( 21 )
+HSlider/icons/grabber = ExtResource( 3 )
+HSlider/icons/grabber_highlight = ExtResource( 4 )
+HSlider/icons/tick = ExtResource( 5 )
+HSlider/styles/grabber_area = SubResource( 23 )
+HSlider/styles/grabber_area_highlight = SubResource( 24 )
+HSlider/styles/slider = SubResource( 22 )
+HUD/base_type = "Label"
+HUD/colors/font_color = Color( 0.8, 0.8, 0.8, 1 )
+HUD/fonts/font = SubResource( 4 )
+HUDSmall/base_type = "Label"
+HUDSmall/colors/font_color = Color( 0.8, 0.8, 0.8, 1 )
+HUDSmall/fonts/font = SubResource( 5 )
+LevelUp/base_type = "Label"
+LevelUp/colors/font_color = Color( 1, 1, 1, 1 )
+LevelUp/fonts/font = SubResource( 8 )
+Operation/base_type = "Label"
+Operation/colors/font_color = Color( 1, 1, 1, 1 )
+Operation/fonts/font = SubResource( 7 )
+PauseButton/base_type = "Button"
+PauseButton/fonts/font = SubResource( 15 )
+PauseButton/styles/focus = SubResource( 20 )
+PauseButton/styles/hover = SubResource( 18 )
+PauseButton/styles/normal = SubResource( 16 )
+PauseButton/styles/pressed = SubResource( 19 )
+TitleLabel/base_type = "Label"
+TitleLabel/colors/font_color = Color( 1, 1, 1, 1 )
+TitleLabel/fonts/font = SubResource( 9 )

@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/explosion_wrong_bomb.wav-335eaee794d6599b102c6f8f84797018.sample"
+
+[deps]
+
+source_file="res://sounds/explosion_wrong_bomb.wav"
+dest_files=[ "res://.import/explosion_wrong_bomb.wav-335eaee794d6599b102c6f8f84797018.sample" ]
+
+[params]
+
+force/8_bit=true
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

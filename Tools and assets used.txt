@@ -1,0 +1,18 @@
+Game Engine:
+- https://godotengine.org/
+
+Fonts:
+- https://fonts.google.com/specimen/Ubuntu
+
+Sounds and music:
+- https://opengameart.org/content/8-bit-sound-effects-library
+- https://opengameart.org/content/nes-shooter-music-5-tracks-3-jingles
+
+Images:
+- https://www.kenney.nl/assets/space-shooter-extension
+- https://opengameart.org/content/ulukais-space-skyboxes
+- https://opengameart.org/content/tower-defence-basic-towers
+- https://opengameart.org/content/2d-explosion-animations-2-frame-by-frame
+- https://opengameart.org/content/px-free-scifi-platformer-assets
+- https://opengameart.org/content/sci-fi-shoot-em-up-stage-data
+- https://www.kenney.nl/assets/game-icons
