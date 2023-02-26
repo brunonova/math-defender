@@ -10,9 +10,9 @@ Sounds and music:
 
 Images:
 - https://www.kenney.nl/assets/space-shooter-extension
+- https://www.kenney.nl/assets/game-icons
 - https://opengameart.org/content/ulukais-space-skyboxes
 - https://opengameart.org/content/tower-defence-basic-towers
 - https://opengameart.org/content/2d-explosion-animations-2-frame-by-frame
 - https://opengameart.org/content/px-free-scifi-platformer-assets
 - https://opengameart.org/content/sci-fi-shoot-em-up-stage-data
-- https://www.kenney.nl/assets/game-icons
